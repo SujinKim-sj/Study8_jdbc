@@ -6,7 +6,7 @@ public class StartMain {
 		System.out.println("DB 연동 테스트 시작");
 	
 		System.out.println("DB 연동 테스트 끝");
-	
+		
 	
 	}
 
