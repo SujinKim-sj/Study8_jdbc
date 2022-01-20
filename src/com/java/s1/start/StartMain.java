@@ -2,6 +2,7 @@ package com.java.s1.start;
 
 import java.util.List;
 
+import com.java.s1.department.DepartmentController;
 import com.java.s1.department.DepartmentDAO;
 import com.java.s1.department.DepartmentDTO;
 import com.java.s1.department.DepartmentView;
@@ -17,18 +18,27 @@ public class StartMain {
 	
 		//DBConnector dbConnector = new DBConnector();
 		DepartmentDAO departmentDAO = new DepartmentDAO();
-		DepartmentView departmentView = new DepartmentView();
+		//DepartmentView departmentView = new DepartmentView();
 		
-		LocationDAO locationDAO = new LocationDAO();
-		LocationView locationView = new LocationView();
+		//LocationDAO locationDAO = new LocationDAO();
+		//LocationView locationView = new LocationView();
 		
 		try {
+			DepartmentDTO departmentDTO = new DepartmentDTO();
+			departmentDTO.setDepartment_id(20);
+			departmentDTO = departmentDAO.getOne(departmentDTO);
+			
+			//DepartmentDTO departmentDTO = departmentDAO.getOne(20);
+			System.out.println(departmentDTO.getDepartment_name());
+		
 			//dbConnector.getConnect();
 			//List<DepartmentDTO> ar = departmentDAO.getList();
 			//departmentView.view(ar);
 			
-			List<LocationDTO> ar = locationDAO.getList();
-			locationView.view(ar);
+			//List<LocationDTO> ar = locationDAO.getList();
+			//locationView.view(ar);
+			DepartmentController departmentController = new DepartmentController();
+			departmentController.start();
 			
 		} catch (Exception e) {
 			e.printStackTrace();
