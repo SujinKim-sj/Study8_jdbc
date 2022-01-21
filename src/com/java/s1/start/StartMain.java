@@ -16,33 +16,14 @@ public class StartMain {
 	public static void main(String[] args) {
 		System.out.println("DB 연동 테스트 시작");
 	
-		//DBConnector dbConnector = new DBConnector();
-		DepartmentDAO departmentDAO = new DepartmentDAO();
-		//DepartmentView departmentView = new DepartmentView();
-		
-		//LocationDAO locationDAO = new LocationDAO();
-		//LocationView locationView = new LocationView();
+		FrontController frontController = new FrontController();
 		
 		try {
-			DepartmentDTO departmentDTO = new DepartmentDTO();
-			departmentDTO.setDepartment_id(20);
-			departmentDTO = departmentDAO.getOne(departmentDTO);
-			
-			//DepartmentDTO departmentDTO = departmentDAO.getOne(20);
-			System.out.println(departmentDTO.getDepartment_name());
-		
-			//dbConnector.getConnect();
-			//List<DepartmentDTO> ar = departmentDAO.getList();
-			//departmentView.view(ar);
-			
-			//List<LocationDTO> ar = locationDAO.getList();
-			//locationView.view(ar);
-			DepartmentController departmentController = new DepartmentController();
-			departmentController.start();
-			
+			frontController.mainStart();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} 
+		}
+		
 		System.out.println("DB 연동 테스트 끝");
 	}
 
