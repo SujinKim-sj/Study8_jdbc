@@ -3,19 +3,21 @@ package com.java.s1.start;
 import java.util.Scanner;
 
 import com.java.s1.department.DepartmentController;
+import com.java.s1.employee.EmployeeController;
+import com.java.s1.location.LocationController;
 
 public class FrontController {
 
 	private Scanner sc;
 	private DepartmentController departmentController;
-	//LocationController
-	//EmployeeController
+	private LocationController locationController;
+	private EmployeeController employeeController;
 	
 	public FrontController() {
 		sc = new Scanner(System.in);
 		departmentController = new DepartmentController();
-		//LocationController
-		//EmployeeController
+		locationController = new LocationController();
+		employeeController = new EmployeeController();
 	}
 	
 	public void mainStart() throws Exception {
@@ -29,13 +31,13 @@ public class FrontController {
 			
 			switch (select) {
 			case 1:
-				//EmployeeController의 start 메서드 호출
+				employeeController.start();
 				break;
 			case 2: 
 				departmentController.start();
 				break;
 			case 3:
-				//LocationController의 start 메서드 호출
+				locationController.start();
 				break;
 			default:
 				flag = false;
