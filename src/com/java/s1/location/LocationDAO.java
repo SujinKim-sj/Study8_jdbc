@@ -16,6 +16,38 @@ public class LocationDAO {
 		dbConnector = new DBConnector();
 	}
 	
+	//지역번호로 조회
+	public LocationDTO getOne(LocationDTO loc) throws Exception{
+		
+		LocationDTO locationDTO = null;
+		
+		Connection con = dbConnector.getConnect();
+		
+		String sql = "SELECT * FROM LOCATIONS WHERE LOCATION_ID = ?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		st.setInt(1, loc.getLocation_id());
+		
+		ResultSet rs = st.executeQuery();
+		
+		if(rs.next()) {
+			locationDTO = new LocationDTO();
+			locationDTO.setLocation_id(rs.getInt("location_id"));
+			locationDTO.setStreet_address(rs.getString("street_address"));
+			locationDTO.setPostal_code(rs.getString("postal_code"));
+			locationDTO.setCity(rs.getString("city"));
+			locationDTO.setState_province(rs.getString("state_province"));
+			locationDTO.setCountry_id(rs.getString("country_id"));
+		}
+		
+		rs.close();
+		st.close();
+		con.close();
+		
+		return locationDTO;
+		
+	}
+	
 	public List<LocationDTO> getList() throws Exception{
 		ArrayList<LocationDTO> ar = new ArrayList<>();
 		
