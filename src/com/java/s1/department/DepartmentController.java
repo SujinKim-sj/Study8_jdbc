@@ -7,7 +7,7 @@ public class DepartmentController {
 
 	private DepartmentDAO departmentDAO;
 	private DepartmentView departmentView;
-	private Scanner sc = new Scanner(System.in);
+	private Scanner sc;
 	
 	public DepartmentController() {
 
