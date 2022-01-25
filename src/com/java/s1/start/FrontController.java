@@ -5,6 +5,7 @@ import java.util.Scanner;
 import com.java.s1.department.DepartmentController;
 import com.java.s1.employee.EmployeeController;
 import com.java.s1.location.LocationController;
+import com.java.s1.region.RegionController;
 
 public class FrontController {
 
@@ -12,12 +13,14 @@ public class FrontController {
 	private DepartmentController departmentController;
 	private LocationController locationController;
 	private EmployeeController employeeController;
+	private RegionController regionController;
 	
 	public FrontController() {
 		sc = new Scanner(System.in);
 		departmentController = new DepartmentController();
 		locationController = new LocationController();
 		employeeController = new EmployeeController();
+		regionController = new RegionController();
 	}
 	
 	public void mainStart() throws Exception {
@@ -26,7 +29,8 @@ public class FrontController {
 			System.out.println("1. 직 원  관 리");
 			System.out.println("2. 부 서  관 리");
 			System.out.println("3. 지 역  관 리");
-			System.out.println("4. 프로그램 종료");
+			System.out.println("4. 대 륙  관 리");
+			System.out.println("5. 프로그램 종료");
 			int select = sc.nextInt();
 			
 			switch (select) {
@@ -39,6 +43,8 @@ public class FrontController {
 			case 3:
 				locationController.start();
 				break;
+			case 4:
+				regionController.start();
 			default:
 				flag = false;
 			}
