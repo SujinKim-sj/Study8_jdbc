@@ -8,6 +8,8 @@ import java.util.List;
 
 import com.java.s1.util.DBConnector;
 
+import oracle.security.o5logon.d;
+
 public class DepartmentDAO {
 
 	//DAO : Data Access Object
@@ -16,6 +18,46 @@ public class DepartmentDAO {
 	public DepartmentDAO() {
 		dbConnector = new DBConnector();
 	}
+	
+	//delete
+	public int setDelete(DepartmentDTO departmentDTO) throws Exception {
+		Connection con = dbConnector.getConnect();
+		
+		String sql = "DELETE departments WHERE department_id = ?";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setInt(1, departmentDTO.getDepartment_id());
+		
+		int result = st.executeUpdate();
+		
+		st.close();
+		con.close();
+		
+		return result;
+	}
+	
+	//insert
+	public int setInsert(DepartmentDTO departmentDTO) throws Exception {
+		Connection con = dbConnector.getConnect();
+		
+		String sql = "INSERT INTO departments(department_id, department_name, manager_id, location_id) "
+				+ "VALUES(DEPARTMENTS_SEQ.nextval, ?, ?, ?)";
+		
+		PreparedStatement st = con.prepareStatement(sql);
+		
+		st.setString(1, departmentDTO.getDepartment_name());
+		st.setInt(2, departmentDTO.getManager_id());
+		st.setInt(3, departmentDTO.getLocation_id());
+		
+		int result = st.executeUpdate();
+		
+		st.close();
+		con.close();
+		
+		return result;
+	}
+	
 	
 	//부서정보, 부서에 근무하는 사원들의 정보
 	public void getDEP_EMPList() throws Exception{
